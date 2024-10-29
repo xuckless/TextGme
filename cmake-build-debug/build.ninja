@@ -55,20 +55,8 @@ build CMakeFiles/TextGme.dir/main.cpp.o: CXX_COMPILER__TextGme_unscanned_Debug /
   OBJECT_DIR = CMakeFiles/TextGme.dir
   OBJECT_FILE_DIR = CMakeFiles/TextGme.dir
 
-build CMakeFiles/TextGme.dir/LevelHandler.cpp.o: CXX_COMPILER__TextGme_unscanned_Debug /Users/ali/cosc-projects/cpp/TextGme/LevelHandler.cpp || cmake_object_order_depends_target_TextGme
-  DEP_FILE = CMakeFiles/TextGme.dir/LevelHandler.cpp.o.d
-  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/TextGme.dir
-  OBJECT_FILE_DIR = CMakeFiles/TextGme.dir
-
-build CMakeFiles/TextGme.dir/LevelOne.cpp.o: CXX_COMPILER__TextGme_unscanned_Debug /Users/ali/cosc-projects/cpp/TextGme/LevelOne.cpp || cmake_object_order_depends_target_TextGme
-  DEP_FILE = CMakeFiles/TextGme.dir/LevelOne.cpp.o.d
-  FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -fcolor-diagnostics
-  OBJECT_DIR = CMakeFiles/TextGme.dir
-  OBJECT_FILE_DIR = CMakeFiles/TextGme.dir
-
-build CMakeFiles/TextGme.dir/Levels.cpp.o: CXX_COMPILER__TextGme_unscanned_Debug /Users/ali/cosc-projects/cpp/TextGme/Levels.cpp || cmake_object_order_depends_target_TextGme
-  DEP_FILE = CMakeFiles/TextGme.dir/Levels.cpp.o.d
+build CMakeFiles/TextGme.dir/Player.cpp.o: CXX_COMPILER__TextGme_unscanned_Debug /Users/ali/cosc-projects/cpp/TextGme/Player.cpp || cmake_object_order_depends_target_TextGme
+  DEP_FILE = CMakeFiles/TextGme.dir/Player.cpp.o.d
   FLAGS = -g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -fcolor-diagnostics
   OBJECT_DIR = CMakeFiles/TextGme.dir
   OBJECT_FILE_DIR = CMakeFiles/TextGme.dir
@@ -81,7 +69,7 @@ build CMakeFiles/TextGme.dir/Levels.cpp.o: CXX_COMPILER__TextGme_unscanned_Debug
 #############################################
 # Link the executable TextGme
 
-build TextGme: CXX_EXECUTABLE_LINKER__TextGme_Debug CMakeFiles/TextGme.dir/main.cpp.o CMakeFiles/TextGme.dir/LevelHandler.cpp.o CMakeFiles/TextGme.dir/LevelOne.cpp.o CMakeFiles/TextGme.dir/Levels.cpp.o
+build TextGme: CXX_EXECUTABLE_LINKER__TextGme_Debug CMakeFiles/TextGme.dir/main.cpp.o CMakeFiles/TextGme.dir/Player.cpp.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk
   OBJECT_DIR = CMakeFiles/TextGme.dir
   POST_BUILD = :

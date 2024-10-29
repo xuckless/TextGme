@@ -3,4 +3,5 @@ project(TextGme)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(TextGme main.cpp)
+add_executable(TextGme main.cpp
+        Player.cpp)
