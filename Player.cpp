@@ -41,7 +41,7 @@ public:
     void decreaseAura(int amount) {
         if (aura - amount < 0) {
             aura = 0;
-            cout << "Aura is empty, you lost against sukuna" << endl;
+            cout << "Aura is empty, you lost against sukunaa" << endl;
         }
     }
 };
