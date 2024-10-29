@@ -3,7 +3,4 @@ project(TextGme)
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(TextGme main.cpp
-        LevelHandler.cpp
-        Levels.cpp
-)
+add_executable(TextGme main.cpp)
