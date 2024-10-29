@@ -39,11 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "TextGme::@6890427a1f51a3e7e1df",
-<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-c6c1801d639474b330e8.json
 					"jsonFile" : "target-TextGme-Debug-4a0a822bc68768d61f2d.json",
-========
-					"jsonFile" : "target-TextGme-Debug-a597d82fd5b712811992.json",
->>>>>>>> origin/main:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-311f50f93c452c9e112d.json
 					"name" : "TextGme",
 					"projectIndex" : 0
 				}
@@ -53,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/eliebinamungu/Desktop/TextGme/cmake-build-debug",
-		"source" : "/Users/eliebinamungu/Desktop/TextGme"
+		"build" : "/Users/ali/cosc-projects/cpp/TextGme/cmake-build-debug",
+		"source" : "/Users/ali/cosc-projects/cpp/TextGme"
 	},
 	"version" : 
 	{
