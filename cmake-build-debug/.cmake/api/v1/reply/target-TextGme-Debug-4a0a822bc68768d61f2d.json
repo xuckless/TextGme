@@ -35,7 +35,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.1.sdk -fcolor-diagnostics"
+					"fragment" : "-g -std=gnu++2b -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics"
 				}
 			],
 			"language" : "CXX",
@@ -51,9 +51,13 @@
 			[
 				0,
 				1,
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-TextGme-Debug-4a0a822bc68768d61f2d.json
 				2,
 				3,
 				4
+========
+				2
+>>>>>>>> origin/main:cmake-build-debug/.cmake/api/v1/reply/target-TextGme-Debug-a597d82fd5b712811992.json
 			]
 		}
 	],
@@ -88,9 +92,13 @@
 			[
 				0,
 				1,
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-TextGme-Debug-4a0a822bc68768d61f2d.json
 				2,
 				3,
 				4
+========
+				2
+>>>>>>>> origin/main:cmake-build-debug/.cmake/api/v1/reply/target-TextGme-Debug-a597d82fd5b712811992.json
 			]
 		}
 	],
@@ -113,6 +121,7 @@
 			"compileGroupIndex" : 0,
 			"path" : "Enemy.cpp",
 			"sourceGroupIndex" : 0
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/target-TextGme-Debug-4a0a822bc68768d61f2d.json
 		},
 		{
 			"backtrace" : 1,
@@ -125,6 +134,8 @@
 			"compileGroupIndex" : 0,
 			"path" : "Levels.cpp",
 			"sourceGroupIndex" : 0
+========
+>>>>>>>> origin/main:cmake-build-debug/.cmake/api/v1/reply/target-TextGme-Debug-a597d82fd5b712811992.json
 		}
 	],
 	"type" : "EXECUTABLE"
