@@ -4,4 +4,7 @@ project(TextGme)
 set(CMAKE_CXX_STANDARD 26)
 
 add_executable(TextGme main.cpp
-        Player.cpp)
+        Player.cpp
+        Enemy.cpp
+        LevelHandler.cpp
+        Levels.cpp)

@@ -31,7 +31,8 @@ public:
 
     int increaseAura(int amount) {
         if (aura + amount > maxAura) {
-            cout << "Aura is full" << endl; return 0;
+            cout << "Aura is full" << endl;
+            return 0;
         }
         aura += amount;
         cout << "Aura increased by " << amount << endl;
