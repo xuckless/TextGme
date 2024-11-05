@@ -11,4 +11,5 @@ add_executable(TextGme main.cpp
         LevelTwo.h
         LevelThree.h
         LevelHandler.h
-        Levels.h)
+        Levels.h
+        chest.h)

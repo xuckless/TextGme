@@ -46,6 +46,7 @@ public:
         } else {
             aura-=amount;
             cout << "Aura decreased by " << amount << endl;
+            cout << "Current aura: " << aura << endl;
         }
     }
 };
