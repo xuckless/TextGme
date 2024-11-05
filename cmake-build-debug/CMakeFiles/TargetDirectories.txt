@@ -1,3 +1,3 @@
-/Users/eliebinamungu/Desktop/TextGme/cmake-build-debug/CMakeFiles/TextGme.dir
-/Users/eliebinamungu/Desktop/TextGme/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/eliebinamungu/Desktop/TextGme/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ali/cosc-projects/cpp/TextGme/cmake-build-debug/CMakeFiles/TextGme.dir
+/Users/ali/cosc-projects/cpp/TextGme/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ali/cosc-projects/cpp/TextGme/cmake-build-debug/CMakeFiles/rebuild_cache.dir
