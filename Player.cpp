@@ -43,6 +43,9 @@ public:
         if (aura - amount < 0) {
             aura = 0; //this checks if your aura is equal to zero if it is the game ends
             cout << "Aura is empty, you lost against sukunaa" << endl;
+        } else {
+            aura-=amount;
+            cout << "Aura decreased by " << amount << endl;
         }
     }
 };
