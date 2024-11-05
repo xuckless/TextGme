@@ -6,5 +6,9 @@ set(CMAKE_CXX_STANDARD 26)
 add_executable(TextGme main.cpp
         Player.cpp
         Enemy.cpp
-        LevelHandler.cpp
-        Levels.cpp)
+        Level.h
+        LevelOne.h
+        LevelTwo.h
+        LevelThree.h
+        LevelHandler.h
+        Levels.h)
