@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/eliebinamungu/Desktop/TextGme/cmake-build-debug",
-		"source" : "/Users/eliebinamungu/Desktop/TextGme"
+		"build" : "/Users/ali/cosc-projects/cpp/TextGme/cmake-build-debug",
+		"source" : "/Users/ali/cosc-projects/cpp/TextGme"
 	},
 	"version" : 
 	{
