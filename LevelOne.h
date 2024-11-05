@@ -8,7 +8,7 @@
 
 class LevelOne : public Level {
 private:
-    bool isComplete = false;
+    bool isComplete = false; 
 
 public:
     LevelOne() = default;

@@ -8,7 +8,7 @@
 #include "LevelThree.h"
 
 class Levels {
-private:
+private: //this function adds the level into the linkedlist 
     std::shared_ptr<LevelHandler> firstLevel;
 
     void setUp() {
@@ -22,7 +22,7 @@ public:
         setUp();
     }
 
-    void startLevels() {
+    void startLevels() { //this function goes through the linkedlist one at the time changing the levels after the player completes it
         auto current = firstLevel;
         while (current) {
             auto level = current->getLevel();
