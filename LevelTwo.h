@@ -2,20 +2,19 @@
 #ifndef LEVELTWO_H
 #define LEVELTWO_H
 
-#include "Level.h"
-#include <iostream>
+#include "BaseLevel.h"
+#include "Enemy.h"
 
-class LevelTwo : public Level {
+class LevelTwo : public BaseLevel {
 private:
-    bool isComplete = false;
+    bool isComplete;
+    Enemy miniBoss;
 
 public:
-    LevelTwo() = default;
-
-    void proceed() override {
-        std::cout << "Hello, welcome to level two" << std::endl;
-        isComplete = true;
-    }
+    LevelTwo();
+    void setUpDecisionTree() override;
+    void completeLevel();
+    void proceed() override;
 };
 
 #endif // LEVELTWO_H

@@ -2,10 +2,10 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 
-class Level { 
+class Level {
 public:
-    virtual void proceed() = 0; // Pure virtual function
-    virtual ~Level() = default; // Virtual destructor
+    virtual void proceed() = 0;
+    virtual ~Level() {}
 };
 
 #endif // LEVEL_H

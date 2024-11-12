@@ -117,24 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named TextGme
+# Target rules for targets named TextGame
 
 # Build rule for target.
-TextGme: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TextGme
-.PHONY : TextGme
+TextGame: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 TextGame
+.PHONY : TextGame
 
 # fast build rule for target.
-TextGme/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/build
-.PHONY : TextGme/fast
+TextGame/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/build
+.PHONY : TextGame/fast
+
+BaseLevel.o: BaseLevel.cpp.o
+.PHONY : BaseLevel.o
+
+# target to build an object file
+BaseLevel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/BaseLevel.cpp.o
+.PHONY : BaseLevel.cpp.o
+
+BaseLevel.i: BaseLevel.cpp.i
+.PHONY : BaseLevel.i
+
+# target to preprocess a source file
+BaseLevel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/BaseLevel.cpp.i
+.PHONY : BaseLevel.cpp.i
+
+BaseLevel.s: BaseLevel.cpp.s
+.PHONY : BaseLevel.s
+
+# target to generate assembly for a file
+BaseLevel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/BaseLevel.cpp.s
+.PHONY : BaseLevel.cpp.s
 
 Enemy.o: Enemy.cpp.o
 .PHONY : Enemy.o
 
 # target to build an object file
 Enemy.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/Enemy.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Enemy.cpp.o
 .PHONY : Enemy.cpp.o
 
 Enemy.i: Enemy.cpp.i
@@ -142,7 +166,7 @@ Enemy.i: Enemy.cpp.i
 
 # target to preprocess a source file
 Enemy.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/Enemy.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Enemy.cpp.i
 .PHONY : Enemy.cpp.i
 
 Enemy.s: Enemy.cpp.s
@@ -150,15 +174,135 @@ Enemy.s: Enemy.cpp.s
 
 # target to generate assembly for a file
 Enemy.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/Enemy.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Enemy.cpp.s
 .PHONY : Enemy.cpp.s
+
+LevelHandler.o: LevelHandler.cpp.o
+.PHONY : LevelHandler.o
+
+# target to build an object file
+LevelHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelHandler.cpp.o
+.PHONY : LevelHandler.cpp.o
+
+LevelHandler.i: LevelHandler.cpp.i
+.PHONY : LevelHandler.i
+
+# target to preprocess a source file
+LevelHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelHandler.cpp.i
+.PHONY : LevelHandler.cpp.i
+
+LevelHandler.s: LevelHandler.cpp.s
+.PHONY : LevelHandler.s
+
+# target to generate assembly for a file
+LevelHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelHandler.cpp.s
+.PHONY : LevelHandler.cpp.s
+
+LevelOne.o: LevelOne.cpp.o
+.PHONY : LevelOne.o
+
+# target to build an object file
+LevelOne.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelOne.cpp.o
+.PHONY : LevelOne.cpp.o
+
+LevelOne.i: LevelOne.cpp.i
+.PHONY : LevelOne.i
+
+# target to preprocess a source file
+LevelOne.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelOne.cpp.i
+.PHONY : LevelOne.cpp.i
+
+LevelOne.s: LevelOne.cpp.s
+.PHONY : LevelOne.s
+
+# target to generate assembly for a file
+LevelOne.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelOne.cpp.s
+.PHONY : LevelOne.cpp.s
+
+LevelThree.o: LevelThree.cpp.o
+.PHONY : LevelThree.o
+
+# target to build an object file
+LevelThree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.o
+.PHONY : LevelThree.cpp.o
+
+LevelThree.i: LevelThree.cpp.i
+.PHONY : LevelThree.i
+
+# target to preprocess a source file
+LevelThree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.i
+.PHONY : LevelThree.cpp.i
+
+LevelThree.s: LevelThree.cpp.s
+.PHONY : LevelThree.s
+
+# target to generate assembly for a file
+LevelThree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.s
+.PHONY : LevelThree.cpp.s
+
+LevelTwo.o: LevelTwo.cpp.o
+.PHONY : LevelTwo.o
+
+# target to build an object file
+LevelTwo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.o
+.PHONY : LevelTwo.cpp.o
+
+LevelTwo.i: LevelTwo.cpp.i
+.PHONY : LevelTwo.i
+
+# target to preprocess a source file
+LevelTwo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.i
+.PHONY : LevelTwo.cpp.i
+
+LevelTwo.s: LevelTwo.cpp.s
+.PHONY : LevelTwo.s
+
+# target to generate assembly for a file
+LevelTwo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.s
+.PHONY : LevelTwo.cpp.s
+
+Levels.o: Levels.cpp.o
+.PHONY : Levels.o
+
+# target to build an object file
+Levels.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Levels.cpp.o
+.PHONY : Levels.cpp.o
+
+Levels.i: Levels.cpp.i
+.PHONY : Levels.i
+
+# target to preprocess a source file
+Levels.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Levels.cpp.i
+.PHONY : Levels.cpp.i
+
+Levels.s: Levels.cpp.s
+.PHONY : Levels.s
+
+# target to generate assembly for a file
+Levels.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Levels.cpp.s
+.PHONY : Levels.cpp.s
 
 Player.o: Player.cpp.o
 .PHONY : Player.o
 
 # target to build an object file
 Player.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/Player.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Player.cpp.o
 .PHONY : Player.cpp.o
 
 Player.i: Player.cpp.i
@@ -166,7 +310,7 @@ Player.i: Player.cpp.i
 
 # target to preprocess a source file
 Player.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/Player.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Player.cpp.i
 .PHONY : Player.cpp.i
 
 Player.s: Player.cpp.s
@@ -174,7 +318,7 @@ Player.s: Player.cpp.s
 
 # target to generate assembly for a file
 Player.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/Player.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Player.cpp.s
 .PHONY : Player.cpp.s
 
 main.o: main.cpp.o
@@ -182,7 +326,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -190,7 +334,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -198,7 +342,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGme.dir/build.make CMakeFiles/TextGme.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -209,10 +353,28 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... TextGme"
+	@echo "... TextGame"
+	@echo "... BaseLevel.o"
+	@echo "... BaseLevel.i"
+	@echo "... BaseLevel.s"
 	@echo "... Enemy.o"
 	@echo "... Enemy.i"
 	@echo "... Enemy.s"
+	@echo "... LevelHandler.o"
+	@echo "... LevelHandler.i"
+	@echo "... LevelHandler.s"
+	@echo "... LevelOne.o"
+	@echo "... LevelOne.i"
+	@echo "... LevelOne.s"
+	@echo "... LevelThree.o"
+	@echo "... LevelThree.i"
+	@echo "... LevelThree.s"
+	@echo "... LevelTwo.o"
+	@echo "... LevelTwo.i"
+	@echo "... LevelTwo.s"
+	@echo "... Levels.o"
+	@echo "... Levels.i"
+	@echo "... Levels.s"
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"

@@ -2,13 +2,19 @@
 #ifndef LEVELTHREE_H
 #define LEVELTHREE_H
 
-#include "Level.h"
+#include "BaseLevel.h"
+#include "Enemy.h"
 
-class LevelThree : public Level {
+class LevelThree : public BaseLevel {
+private:
+    bool isComplete;
+    Enemy finalBoss;
+
 public:
-    void proceed() override {
-        // Implementation goes here
-    }
+    LevelThree();
+    void setUpDecisionTree() override;
+    void completeLevel();
+    void proceed() override;
 };
 
 #endif // LEVELTHREE_H
