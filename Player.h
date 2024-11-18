@@ -17,6 +17,7 @@ private:
     std::vector<std::string> artifacts;
 
 public:
+    Player(); // Default constructor declaration
     Player(const std::string& name, int initialAura, int initialHealth);
     Player(const std::string& name);
 

@@ -1,22 +1,31 @@
-// Levels.cpp
+//Levels.cpp
+
 #include "Levels.h"
 #include "LevelOne.h"
-#include "LevelTwo.h" // Include LevelTwo
+#include "LevelTwo.h"
 
 Levels::Levels() {
     setUp();
 }
 
 Levels::~Levels() {
-    delete firstLevel;
+    LevelHandler* current = firstLevel;
+    while (current != nullptr) {
+        LevelHandler* next = current->getNextLevel();
+        delete current;
+        current = next;
+    }
 }
 
 void Levels::setUp() {
-    // Initialize the first level
-    firstLevel = new LevelHandler(new LevelOne(), nullptr);
+    // Create a Player object
+    Player player;
 
-    // Add LevelTwo to the end of the levels linked list
-    firstLevel->addLevelInLast(new LevelTwo());
+    // Initialize the first level with the Player object
+    firstLevel = new LevelHandler(new LevelOne(player), nullptr);
+
+    // Add LevelTwo to the end of the levels linked list with the Player object
+    firstLevel->addLevelInLast(new LevelTwo(player));
 }
 
 void Levels::startLevels() {

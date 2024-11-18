@@ -86,7 +86,7 @@ void LevelTwo::setUpDecisionTree() {
         } else {
             std::cout << "Incorrect. The door remains closed." << std::endl;
             std::cout << "You decide to try forcing the door open." << std::endl;
-            // Proceed to forceDoor
+            // Proceed to forceDooraa
         }
     });
 

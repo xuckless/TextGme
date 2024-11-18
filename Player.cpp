@@ -3,6 +3,11 @@
 #include <algorithm>
 #include "Enemy.h"
 
+// Default constructor definition
+Player::Player() : Player("Default", 100, 100) {
+    // Delegating constructor
+}
+
 Player::Player(const std::string& name, int initialAura, int initialHealth)
     : name(name), aura(initialAura), maxAura(1000000000), health(initialHealth) {
     if (name == "Madara") {
@@ -12,7 +17,9 @@ Player::Player(const std::string& name, int initialAura, int initialHealth)
     }
 }
 
-Player::Player(const std::string& name) : Player(name, 0, 100) {}
+Player::Player(const std::string& name) : Player(name, 0, 100) {
+    // Delegating constructor
+}
 
 Player Player::createCharacter(const std::string& characterChoice) {
     if (characterChoice == "Ban") {
