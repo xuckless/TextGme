@@ -12,7 +12,7 @@ private:
 
 public:
     Enemy(const std::string& name, int initialHealth);
-
+    //enemy status functions
     std::string getName() const;
     int getHealth() const;
     void decreaseHealth(int amount);
