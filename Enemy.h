@@ -1,4 +1,3 @@
-// Enemy.h
 #ifndef ENEMY_H
 #define ENEMY_H
 
@@ -7,12 +6,21 @@
 class Enemy {
 private:
     std::string name;
-    int aura; // Enemy's health bar
+    int health;
 
 public:
-    Enemy(int aura);
-    std::string toString() const;
-    int getAura() const;
+    Enemy(const std::string& name, int initialHealth);
+
+    std::string getName() const;
+    int getHealth() const;
+    void decreaseHealth(int amount);
+    void increaseHealth(int amount);
+    bool isDead() const;
+
+    // Enemy actions
+    int attack();
+    void defend();
+    void heal();
 };
 
 #endif // ENEMY_H

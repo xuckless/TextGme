@@ -2,14 +2,14 @@
 #include "Player.h"
 #include <iostream>
 
-Player::Player(const std::string& name, int initialAura)
-    : name(name), aura(initialAura), maxAura(1000000000) {
+Player::Player(const std::string& name, int initialAura, int initialHealth)
+    : name(name), aura(initialAura), maxAura(1000000000), health(initialHealth) {
     if (name == "Gojo Satoru") {
         std::cout << "He's the honored one" << std::endl;
     }
 }
 
-Player::Player(const std::string& name) : Player(name, 0) {}
+Player::Player(const std::string& name) : Player(name, 0, 100) {}
 
 std::string Player::getName() const {
     return name;
@@ -21,6 +21,10 @@ int Player::getAura() const {
 
 int Player::getMaxAura() const {
     return maxAura;
+}
+
+int Player::getHealth() const {
+    return health;
 }
 
 int Player::increaseAura(int amount) {
@@ -45,8 +49,21 @@ void Player::decreaseAura(int amount) {
     }
 }
 
+int Player::increaseHealth(int amount) {
+    health += amount;
+    std::cout << "Health increased by " << amount << std::endl;
+    std::cout << "Current health: " << health << std::endl;
+    return health;
+}
+
+void Player::decreaseHealth(int amount) {
+    health -= amount;
+    std::cout << "Health decreased by " << amount << std::endl;
+    std::cout << "Current health: " << health << std::endl;
+}
+
 bool Player::isDead() const {
-    return aura <= 0;
+    return health <= 0;
 }
 
 bool Player::battle(int enemyAura) {

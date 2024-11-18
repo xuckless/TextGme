@@ -225,54 +225,6 @@ LevelOne.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelOne.cpp.s
 .PHONY : LevelOne.cpp.s
 
-LevelThree.o: LevelThree.cpp.o
-.PHONY : LevelThree.o
-
-# target to build an object file
-LevelThree.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.o
-.PHONY : LevelThree.cpp.o
-
-LevelThree.i: LevelThree.cpp.i
-.PHONY : LevelThree.i
-
-# target to preprocess a source file
-LevelThree.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.i
-.PHONY : LevelThree.cpp.i
-
-LevelThree.s: LevelThree.cpp.s
-.PHONY : LevelThree.s
-
-# target to generate assembly for a file
-LevelThree.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.s
-.PHONY : LevelThree.cpp.s
-
-LevelTwo.o: LevelTwo.cpp.o
-.PHONY : LevelTwo.o
-
-# target to build an object file
-LevelTwo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.o
-.PHONY : LevelTwo.cpp.o
-
-LevelTwo.i: LevelTwo.cpp.i
-.PHONY : LevelTwo.i
-
-# target to preprocess a source file
-LevelTwo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.i
-.PHONY : LevelTwo.cpp.i
-
-LevelTwo.s: LevelTwo.cpp.s
-.PHONY : LevelTwo.s
-
-# target to generate assembly for a file
-LevelTwo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.s
-.PHONY : LevelTwo.cpp.s
-
 Levels.o: Levels.cpp.o
 .PHONY : Levels.o
 
@@ -366,12 +318,6 @@ help:
 	@echo "... LevelOne.o"
 	@echo "... LevelOne.i"
 	@echo "... LevelOne.s"
-	@echo "... LevelThree.o"
-	@echo "... LevelThree.i"
-	@echo "... LevelThree.s"
-	@echo "... LevelTwo.o"
-	@echo "... LevelTwo.i"
-	@echo "... LevelTwo.s"
 	@echo "... Levels.o"
 	@echo "... Levels.i"
 	@echo "... Levels.s"

@@ -1,4 +1,3 @@
-// LevelOne.h
 #ifndef LEVELONE_H
 #define LEVELONE_H
 
@@ -15,6 +14,9 @@ public:
     void setUpDecisionTree() override;
     void completeLevel();
     void proceed() override;
+
+    // Declaration of the battleBoss method
+    void battleBoss();
 };
 
 #endif // LEVELONE_H

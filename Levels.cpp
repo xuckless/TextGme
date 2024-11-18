@@ -1,8 +1,6 @@
 // Levels.cpp
 #include "Levels.h"
 #include "LevelOne.h"
-#include "LevelTwo.h"
-#include "LevelThree.h"
 
 Levels::Levels() {
     setUp();
@@ -14,8 +12,6 @@ Levels::~Levels() {
 
 void Levels::setUp() {
     firstLevel = new LevelHandler(new LevelOne(), nullptr);
-    firstLevel->addLevelInLast(new LevelTwo());
-    firstLevel->addLevelInLast(new LevelThree());
 }
 
 void Levels::startLevels() {

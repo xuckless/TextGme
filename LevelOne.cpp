@@ -1,11 +1,14 @@
-// LevelOne.cpp
 #include "LevelOne.h"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 
-LevelOne::LevelOne() : isComplete(false), enemy(200) {
+// Constructor
+LevelOne::LevelOne() : isComplete(false), enemy("Nightmare", 200) {
     setUpDecisionTree();
 }
 
+// Setup Decision Tree
 void LevelOne::setUpDecisionTree() {
     scenarioHandler = new ScenarioHandler<std::string>("Welcome to Level One");
 
@@ -18,51 +21,125 @@ void LevelOne::setUpDecisionTree() {
     // Link "chestOpen" to "nextRoom" to allow progression
     scenarioHandler->linkChild(chestOpen, nextRoom);
 
-    // Add an action to "chestOpen" to display a message
-    addAction("Chest Open, continue to the door", [this]() { player.increaseAura(75); });
+    // Add an action to "chestOpen" to reward the player
+    addAction("Chest Open, continue to the door", [this]() {
+        player.increaseAura(75);
+        std::cout << "You feel your energy surge. Aura increased by 75!" << std::endl;
+    });
 
     // Create another branching path within the "nextRoom" scenario
-    auto newLookAround = scenarioHandler->addChild(nextRoom, "Look Around - Press 1");
+    auto newLookAround = scenarioHandler->addChild(nextRoom, "Look around - Press 1");
     auto chest2 = scenarioHandler->addChild(newLookAround, "Open the chest");
     auto chestOpen2 = scenarioHandler->addChild(chest2, "Chest Open, continue to the hallway");
     auto hallway = scenarioHandler->addChild(newLookAround, "Go to the end of the hallway");
 
-    // Link "chestOpen2" to "hallway" to create continuity
+    // Link "chestOpen2" to "hallway" for continuity
     scenarioHandler->linkChild(chestOpen2, hallway);
 
-    // Add an action to "chestOpen2" to display a message
-    addAction("Chest Open, continue to the hallway", [this]() { player.increaseAura(75); });
+    // Add an action to "chestOpen2"
+    addAction("Chest Open, continue to the hallway", [this]() {
+        player.increaseAura(50);
+        std::cout << "Another burst of energy flows through you. Aura increased by 50!" << std::endl;
+    });
 
-    // Create the final part of the tree with a suspenseful "boss room" scenario
-    auto bossRoom = scenarioHandler->addChild(hallway, "You are approaching the boss room! continue");
-    auto peek = scenarioHandler->addChild(bossRoom, "peek the boss");
-    auto noPeek = scenarioHandler->addChild(bossRoom, "run away (Nowhere)");
+    // Boss Room Setup
+    auto bossRoom = scenarioHandler->addChild(hallway, "You are approaching the boss room! Continue");
+    auto peek = scenarioHandler->addChild(bossRoom, "Peek at the boss");
+    auto noPeek = scenarioHandler->addChild(bossRoom, "Run away (Nowhere to go)");
 
-    // Link "noPeek" back to "hallway" for a looped scenario
+    // Link "noPeek" back to "hallway" for a loop
     scenarioHandler->linkChild(noPeek, hallway);
 
-    // Define the completion point of the level
+    // Define the final boss battle scenario
     auto complete = scenarioHandler->addChild(peek, "Battle the boss");
     addAction("Battle the boss", [this]() {
-        if (player.battle(enemy.getAura())) {
-            std::cout << "You won" << std::endl;
-        } else {
-            std::cout << "You died" << std::endl;
-        }
+        battleBoss();
     });
 
     auto progression = scenarioHandler->addChild(complete, "Complete Level");
 
-    // Add an action to the completion point to mark the level as complete
+    // Mark level as complete
     addAction("Complete Level", std::bind(&LevelOne::completeLevel, this));
 }
 
+// Boss Battle Logic
+void LevelOne::battleBoss() {
+    std::cout << "The boss, " << enemy.getName() << ", stands before you!" << std::endl;
+
+    while (!player.isDead() && !enemy.isDead()) {
+        // Player's turn
+        std::cout << "Choose your action:" << std::endl;
+        std::cout << "1. Attack (Cost: 50 Aura)" << std::endl;
+        std::cout << "2. Heal (Cost: 30 Aura)" << std::endl;
+        std::cout << "3. Defend" << std::endl;
+
+        int choice;
+        std::cin >> choice;
+
+        switch (choice) {
+            case 1:
+                if (player.getAura() >= 50) {
+                    int damage = rand() % 20 + 10;
+                    enemy.decreaseHealth(damage);
+                    player.decreaseAura(50);
+                } else {
+                    std::cout << "Not enough aura to attack!" << std::endl;
+                }
+                break;
+
+            case 2:
+                if (player.getAura() >= 30) {
+                    player.increaseHealth(20);
+                    player.decreaseAura(30);
+                } else {
+                    std::cout << "Not enough aura to heal!" << std::endl;
+                }
+                break;
+
+            case 3:
+                std::cout << "You brace for the enemy's attack, reducing damage taken!" << std::endl;
+                // Reduce incoming damage logic can be added here
+                break;
+
+            default:
+                std::cout << "Invalid action. Try again!" << std::endl;
+                continue;
+        }
+
+        // Enemy's turn
+        if (!enemy.isDead()) {
+            int enemyAction = rand() % 3; // Random enemy action
+            switch (enemyAction) {
+                case 0: {
+                    int damage = enemy.attack();
+                    player.decreaseHealth(damage);
+                    break;
+                }
+                case 1:
+                    enemy.heal();
+                    break;
+                case 2:
+                    std::cout << enemy.getName() << " prepares to defend!" << std::endl;
+                    break;
+            }
+        }
+    }
+
+    if (enemy.isDead()) {
+        std::cout << "You have defeated the boss!" << std::endl;
+    } else if (player.isDead()) {
+        std::cout << "You have been defeated by the boss..." << std::endl;
+    }
+}
+
+// Complete Level
 void LevelOne::completeLevel() {
     std::cout << "Level One Complete!" << std::endl;
     this->isComplete = true;
 }
 
+// Proceed with Scenario Navigation
 void LevelOne::proceed() {
-    std::cout << " " << std::endl;
+    std::cout << "Starting Level One..." << std::endl;
     navigateDecisionTree(scenarioHandler->root, [this]() { return isComplete; });
 }
