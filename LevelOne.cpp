@@ -1,4 +1,4 @@
-// LevelOne.cpp
+//LevelOne.cpp
 
 #include "LevelOne.h"
 #include <iostream>
@@ -10,39 +10,41 @@ LevelOne::LevelOne() : isComplete(false), enemy("Nightmare", 200) {
     setUpDecisionTree();
 }
 
+void displayLevelTransition(int level) {
+    std::cout << "\n===================================" << std::endl;
+    std::cout << "           LEVEL " << level << "            " << std::endl;
+    std::cout << "===================================" << std::endl;
+    std::cout << "Get ready for your next challenge!" << std::endl;
+}
+
+
 // Setup Decision Tree
 void LevelOne::setUpDecisionTree() {
     scenarioHandler = new ScenarioHandler<std::string>("Welcome to Level One");
 
     // Create the first branching path with a "Look around" prompt
     auto lookAround = scenarioHandler->addChild(scenarioHandler->root, "Look around");
-    auto chest = scenarioHandler->addChild(lookAround, "Open the chest");
-    auto chestOpen = scenarioHandler->addChild(chest, "Chest Open, continue to the door");
+    auto rareChest = scenarioHandler->addChild(lookAround, "Open the Rare Chest");
+    auto chestOpenRare = scenarioHandler->addChild(rareChest, "Chest Open, continue to the door");
     auto nextRoom = scenarioHandler->addChild(lookAround, "Open the door");
 
-    // Link "chestOpen" to "nextRoom" to allow progression
-    scenarioHandler->linkChild(chestOpen, nextRoom);
+    // Link "chestOpenRare" to "nextRoom" to allow progression
+    scenarioHandler->linkChild(chestOpenRare, nextRoom);
 
-    // Add an action to "chestOpen" to reward the player
-    addAction("Chest Open, continue to the door", [this]() {
-        player.increaseAura(75);
-        std::cout << "You feel your energy surge. Aura increased by 75!" << std::endl;
-    });
+    // Add an action to "chestOpenRare" for a Rare Chest
+    addChestAction("Chest Open, continue to the door", 75, "Rare");
 
     // Create another branching path within the "nextRoom" scenario
     auto newLookAround = scenarioHandler->addChild(nextRoom, "Look around - Press 1");
-    auto chest2 = scenarioHandler->addChild(newLookAround, "Open the chest");
-    auto chestOpen2 = scenarioHandler->addChild(chest2, "Chest Open, continue to the hallway");
+    auto legendaryChest = scenarioHandler->addChild(newLookAround, "Open the Legendary Chest");
+    auto chestOpenLegendary = scenarioHandler->addChild(legendaryChest, "Chest Open, continue to the hallway");
     auto hallway = scenarioHandler->addChild(newLookAround, "Go to the end of the hallway");
 
-    // Link "chestOpen2" to "hallway" for continuity
-    scenarioHandler->linkChild(chestOpen2, hallway);
+    // Link "chestOpenLegendary" to "hallway" for continuity
+    scenarioHandler->linkChild(chestOpenLegendary, hallway);
 
-    // Add an action to "chestOpen2"
-    addAction("Chest Open, continue to the hallway", [this]() {
-        player.increaseAura(50);
-        std::cout << "Another burst of energy flows through you. Aura increased by 50!" << std::endl;
-    });
+    // Add an action to "chestOpenLegendary" for a Legendary Chest
+    addChestAction("Chest Open, continue to the hallway", 150, "Legendary");
 
     // Boss Room Setup
     auto bossRoom = scenarioHandler->addChild(hallway, "You are approaching the boss room! Continue");
@@ -62,6 +64,14 @@ void LevelOne::setUpDecisionTree() {
 
     // Mark level as complete
     addAction("Complete Level", std::bind(&LevelOne::completeLevel, this));
+}
+
+// Add Chest Action with Rewards
+void LevelOne::addChestAction(const std::string& actionName, int auraReward, const std::string& chestType) {
+    addAction(actionName, [this, auraReward, chestType]() {
+        player.increaseAura(auraReward);
+        std::cout << "You opened a " << chestType << " Chest! Aura increased by " << auraReward << "!" << std::endl;
+    });
 }
 
 // Boss Battle Logic
@@ -137,9 +147,6 @@ void LevelOne::battleBoss() {
     }
 }
 
-
-
-
 // Complete Level
 void LevelOne::completeLevel() {
     std::cout << "Level One Complete!" << std::endl;
@@ -148,6 +155,10 @@ void LevelOne::completeLevel() {
 
 // Proceed with Scenario Navigation
 void LevelOne::proceed() {
+    // Display level transition
+    displayLevelTransition(1);
+
     std::cout << "Starting Level One..." << std::endl;
     navigateDecisionTree(scenarioHandler->root, [this]() { return isComplete; });
 }
+

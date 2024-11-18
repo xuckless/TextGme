@@ -1,5 +1,3 @@
-// LevelOne.h
-
 #ifndef LEVELONE_H
 #define LEVELONE_H
 
@@ -19,6 +17,9 @@ public:
 
     // Declaration of the battleBoss method
     void battleBoss();
+
+    // Declaration of addChestAction
+    void addChestAction(const std::string& actionName, int auraReward, const std::string& chestType);
 };
 
 #endif // LEVELONE_H

@@ -17,4 +17,5 @@ add_executable(TextGame main.cpp
         Levels.h
         Levels.cpp
         Player.cpp
+        AsciiArt.h
 )

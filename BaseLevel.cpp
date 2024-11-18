@@ -1,9 +1,19 @@
+//BaseLevel.cpp
+
 #include "BaseLevel.h"
 #include <limits>
 #include <iostream>
+#include "AsciiArt.h"
 
+
+void displayEndeavorArt() {
+    std::cout << AsciiArt::ENDEAVOR_ASCII << std::endl;
+}
 // Constructor
-BaseLevel::BaseLevel() : player("Default", 100, 100) { // Initialize player with default values
+BaseLevel::BaseLevel() : player("Default", 100, 100) {
+    // Initialize player with default values
+
+    displayEndeavorArt();
     // Character selection at the start
     std::cout << "Choose your character:" << std::endl;
     std::cout << "1. Ban (Steal Life)" << std::endl;
