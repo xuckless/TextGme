@@ -18,4 +18,8 @@ add_executable(TextGame main.cpp
         Levels.cpp
         Player.cpp
         AsciiArt.h
+        LevelTwo.h
+        LevelTwo.cpp
+        Utilities.h
+        Utilities.cpp
 )

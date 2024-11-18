@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include <string>
+#include <vector>
 
 // Forward declaration of the Enemy class
 class Enemy;
@@ -12,6 +13,8 @@ private:
     int aura;
     int maxAura;
     int health;
+    int strength;
+    std::vector<std::string> artifacts;
 
 public:
     Player(const std::string& name, int initialAura, int initialHealth);
@@ -30,8 +33,14 @@ public:
     bool isDead() const;
     bool battle(int enemyAura);
 
-    // Add this declaration
     void useAbility(Enemy& enemy);
+
+    // New methods for artifacts
+    void acquireArtifact(const std::string& artifactName);
+    bool hasArtifact(const std::string& artifactName) const;
+    void removeArtifact(const std::string& artifactName);
+
+    int getStrength() const;
 };
 
 #endif // PLAYER_H

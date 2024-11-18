@@ -10,7 +10,7 @@ void displayEndeavorArt() {
     std::cout << AsciiArt::ENDEAVOR_ASCII << std::endl;
 }
 // Constructor
-BaseLevel::BaseLevel() : player("Default", 100, 100) {
+BaseLevel::BaseLevel(Player& player) : player(player) {
     // Initialize player with default values
 
     displayEndeavorArt();

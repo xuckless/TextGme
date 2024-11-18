@@ -1,25 +1,24 @@
-#ifndef LEVELONE_H
-#define LEVELONE_H
+#ifndef LEVELTWO_H
+#define LEVELTWO_H
 
 #include "BaseLevel.h"
 #include "Enemy.h"
 
-class LevelOne : public BaseLevel {
+class LevelTwo : public BaseLevel {
 private:
     bool isComplete;
     Enemy enemy;
 
 public:
-    LevelOne(Player& player); // Updated constructor
+    LevelTwo(Player& player);
     void setUpDecisionTree() override;
     void completeLevel();
     void proceed() override;
 
-    // Declaration of the battleBoss method
+    // Methods for battles and actions
     void battleBoss();
-
-    // Declaration of addChestAction
+    void battleBandits();
     void addChestAction(const std::string& actionName, int auraReward, const std::string& chestType);
 };
 
-#endif // LEVELONE_H
+#endif // LEVELTWO_H

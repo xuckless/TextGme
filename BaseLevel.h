@@ -1,5 +1,3 @@
-// BaseLevel.h
-
 #ifndef BASELEVEL_H
 #define BASELEVEL_H
 
@@ -15,10 +13,10 @@ class BaseLevel : public Level {
 protected:
     ScenarioHandler<std::string>* scenarioHandler; // Handles the decision tree structure
     std::map<std::string, std::function<void()>> actionMap; // Lookup table for actions
-    Player player; // The player object, accessible by derived levels
+    Player& player; // The player object, accessible by derived levels
 
 public:
-    BaseLevel();
+    BaseLevel(Player& player);
     virtual ~BaseLevel();
 
     virtual void setUpDecisionTree() = 0; // Forces derived classes to implement

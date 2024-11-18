@@ -4,19 +4,13 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include "Utilities.h"
 
 // Constructor
-LevelOne::LevelOne() : isComplete(false), enemy("Nightmare", 200) {
+LevelOne::LevelOne(Player& player)
+    : BaseLevel(player), isComplete(false), enemy("Nightmare", 200) {
     setUpDecisionTree();
 }
-
-void displayLevelTransition(int level) {
-    std::cout << "\n===================================" << std::endl;
-    std::cout << "           LEVEL " << level << "            " << std::endl;
-    std::cout << "===================================" << std::endl;
-    std::cout << "Get ready for your next challenge!" << std::endl;
-}
-
 
 // Setup Decision Tree
 void LevelOne::setUpDecisionTree() {

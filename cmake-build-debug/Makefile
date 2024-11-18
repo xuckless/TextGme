@@ -225,6 +225,30 @@ LevelOne.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelOne.cpp.s
 .PHONY : LevelOne.cpp.s
 
+LevelTwo.o: LevelTwo.cpp.o
+.PHONY : LevelTwo.o
+
+# target to build an object file
+LevelTwo.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.o
+.PHONY : LevelTwo.cpp.o
+
+LevelTwo.i: LevelTwo.cpp.i
+.PHONY : LevelTwo.i
+
+# target to preprocess a source file
+LevelTwo.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.i
+.PHONY : LevelTwo.cpp.i
+
+LevelTwo.s: LevelTwo.cpp.s
+.PHONY : LevelTwo.s
+
+# target to generate assembly for a file
+LevelTwo.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelTwo.cpp.s
+.PHONY : LevelTwo.cpp.s
+
 Levels.o: Levels.cpp.o
 .PHONY : Levels.o
 
@@ -273,6 +297,30 @@ Player.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Player.cpp.s
 .PHONY : Player.cpp.s
 
+Utilities.o: Utilities.cpp.o
+.PHONY : Utilities.o
+
+# target to build an object file
+Utilities.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Utilities.cpp.o
+.PHONY : Utilities.cpp.o
+
+Utilities.i: Utilities.cpp.i
+.PHONY : Utilities.i
+
+# target to preprocess a source file
+Utilities.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Utilities.cpp.i
+.PHONY : Utilities.cpp.i
+
+Utilities.s: Utilities.cpp.s
+.PHONY : Utilities.s
+
+# target to generate assembly for a file
+Utilities.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/Utilities.cpp.s
+.PHONY : Utilities.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -318,12 +366,18 @@ help:
 	@echo "... LevelOne.o"
 	@echo "... LevelOne.i"
 	@echo "... LevelOne.s"
+	@echo "... LevelTwo.o"
+	@echo "... LevelTwo.i"
+	@echo "... LevelTwo.s"
 	@echo "... Levels.o"
 	@echo "... Levels.i"
 	@echo "... Levels.s"
 	@echo "... Player.o"
 	@echo "... Player.i"
 	@echo "... Player.s"
+	@echo "... Utilities.o"
+	@echo "... Utilities.i"
+	@echo "... Utilities.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
