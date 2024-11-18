@@ -1,3 +1,5 @@
+// LevelOne.cpp
+
 #include "LevelOne.h"
 #include <iostream>
 #include <cstdlib>
@@ -67,11 +69,10 @@ void LevelOne::battleBoss() {
     std::cout << "The boss, " << enemy.getName() << ", stands before you!" << std::endl;
 
     while (!player.isDead() && !enemy.isDead()) {
-        // Player's turn
-        std::cout << "Choose your action:" << std::endl;
+        std::cout << "Choose your action: (actual aura)" << player.getAura() << std::endl;
         std::cout << "1. Attack (Cost: 50 Aura)" << std::endl;
         std::cout << "2. Heal (Cost: 30 Aura)" << std::endl;
-        std::cout << "3. Defend" << std::endl;
+        std::cout << "3. Use Ability" << std::endl;
 
         int choice;
         std::cin >> choice;
@@ -79,7 +80,7 @@ void LevelOne::battleBoss() {
         switch (choice) {
             case 1:
                 if (player.getAura() >= 50) {
-                    int damage = rand() % 20 + 10;
+                    int damage = (player.getName() == "Madara") ? (rand() % 20 + 30) : (rand() % 20 + 10);
                     enemy.decreaseHealth(damage);
                     player.decreaseAura(50);
                 } else {
@@ -97,29 +98,33 @@ void LevelOne::battleBoss() {
                 break;
 
             case 3:
-                std::cout << "You brace for the enemy's attack, reducing damage taken!" << std::endl;
-                // Reduce incoming damage logic can be added here
+                player.useAbility(enemy); // Pass the enemy instance
                 break;
 
             default:
                 std::cout << "Invalid action. Try again!" << std::endl;
-                continue;
+                break;
         }
 
-        // Enemy's turn
         if (!enemy.isDead()) {
-            int enemyAction = rand() % 3; // Random enemy action
+            int enemyAction = rand() % 3; // Randomly choose between 0, 1, or 2
+
             switch (enemyAction) {
-                case 0: {
+                case 0: { // Enemy attacks
                     int damage = enemy.attack();
                     player.decreaseHealth(damage);
                     break;
                 }
-                case 1:
+                case 1: { // Enemy heals
                     enemy.heal();
                     break;
-                case 2:
-                    std::cout << enemy.getName() << " prepares to defend!" << std::endl;
+                }
+                case 2: { // Enemy defends
+                    enemy.defend();
+                    break;
+                }
+                default:
+                    std::cout << enemy.getName() << " seems confused and does nothing!" << std::endl;
                     break;
             }
         }
@@ -131,6 +136,9 @@ void LevelOne::battleBoss() {
         std::cout << "You have been defeated by the boss..." << std::endl;
     }
 }
+
+
+
 
 // Complete Level
 void LevelOne::completeLevel() {

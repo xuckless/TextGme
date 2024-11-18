@@ -1,9 +1,35 @@
 #include "BaseLevel.h"
 #include <limits>
+#include <iostream>
 
 // Constructor
-BaseLevel::BaseLevel() : player("Player 1", 100, 100) { // Correctly using the 3-argument constructor
-    // Initialization moved to derived classes
+BaseLevel::BaseLevel() : player("Default", 100, 100) { // Initialize player with default values
+    // Character selection at the start
+    std::cout << "Choose your character:" << std::endl;
+    std::cout << "1. Ban (Steal Life)" << std::endl;
+    std::cout << "2. Gojo (Starts with more aura)" << std::endl;
+    std::cout << "3. Madara (Deals extra damage)" << std::endl;
+
+    int choice;
+    std::cin >> choice;
+
+    switch (choice) {
+        case 1:
+            player = Player::createCharacter("Ban");
+            break;
+        case 2:
+            player = Player::createCharacter("Gojo");
+            break;
+        case 3:
+            player = Player::createCharacter("Madara");
+            break;
+        default:
+            std::cout << "Invalid choice. Defaulting to a generic player." << std::endl;
+            player = Player::createCharacter("Default");
+            break;
+    }
+
+    std::cout << "You have chosen: " << player.getName() << std::endl;
 }
 
 // Destructor

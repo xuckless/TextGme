@@ -1,8 +1,10 @@
-// Player.h
 #ifndef PLAYER_H
 #define PLAYER_H
 
 #include <string>
+
+// Forward declaration of the Enemy class
+class Enemy;
 
 class Player {
 private:
@@ -15,6 +17,8 @@ public:
     Player(const std::string& name, int initialAura, int initialHealth);
     Player(const std::string& name);
 
+    static Player createCharacter(const std::string& characterChoice);
+
     std::string getName() const;
     int getAura() const;
     int getMaxAura() const;
@@ -25,6 +29,9 @@ public:
     void decreaseAura(int amount);
     bool isDead() const;
     bool battle(int enemyAura);
+
+    // Add this declaration
+    void useAbility(Enemy& enemy);
 };
 
 #endif // PLAYER_H
