@@ -1,8 +1,6 @@
-//Levels.cpp
-
 #include "Levels.h"
 #include "LevelOne.h"
-#include "LevelTwo.h"
+#include <memory>
 
 Levels::Levels() {
     setUp();
@@ -18,14 +16,15 @@ Levels::~Levels() {
 }
 
 void Levels::setUp() {
-    // Create a Player object
-    Player player;
+    // Create a shared Player object
+    std::shared_ptr<Player> player = std::make_shared<Player>();
 
     // Initialize the first level with the Player object
     firstLevel = new LevelHandler(new LevelOne(player), nullptr);
 
     // Add LevelTwo to the end of the levels linked list with the Player object
-    firstLevel->addLevelInLast(new LevelTwo(player));
+    // For example:
+    // firstLevel->setNext(new LevelHandler(new LevelTwo(player), nullptr));
 }
 
 void Levels::startLevels() {

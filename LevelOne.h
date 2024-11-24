@@ -10,7 +10,7 @@ private:
     Enemy enemy;
 
 public:
-    LevelOne(Player& player); // Updated constructor
+    LevelOne(std::shared_ptr<Player> player); // Constructor takes shared_ptr
     void setUpDecisionTree() override;
     void completeLevel();
     void proceed() override;

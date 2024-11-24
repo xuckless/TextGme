@@ -1,18 +1,14 @@
 //BaseLevel.cpp
 
 #include "BaseLevel.h"
-#include <limits>
-#include <iostream>
 #include "AsciiArt.h"
-
 
 void displayEndeavorArt() {
     std::cout << AsciiArt::ENDEAVOR_ASCII << std::endl;
 }
-// Constructor
-BaseLevel::BaseLevel(Player& player) : player(player) {
-    // Initialize player with default values
 
+// Constructor
+BaseLevel::BaseLevel(std::shared_ptr<Player> player) : player(player) {
     displayEndeavorArt();
     // Character selection at the start
     std::cout << "Choose your character:" << std::endl;
@@ -25,21 +21,21 @@ BaseLevel::BaseLevel(Player& player) : player(player) {
 
     switch (choice) {
         case 1:
-            player = Player::createCharacter("Ban");
-            break;
+            *player = Player::createCharacter("Ban");
+        break;
         case 2:
-            player = Player::createCharacter("Gojo");
-            break;
+            *player = Player::createCharacter("Gojo");
+        break;
         case 3:
-            player = Player::createCharacter("Madara");
-            break;
+            *player = Player::createCharacter("Madara");
+        break;
         default:
             std::cout << "Invalid choice. Defaulting to a generic player." << std::endl;
-            player = Player::createCharacter("Default");
-            break;
+        *player = Player::createCharacter("Default");
+        break;
     }
 
-    std::cout << "You have chosen: " << player.getName() << std::endl;
+    std::cout << "You have chosen: " << player->getName() << std::endl;
 }
 
 // Destructor
@@ -70,7 +66,7 @@ void BaseLevel::navigateDecisionTree(Scenes<std::string>* node, std::function<bo
         }
 
         // Check if the player is dead
-        if (this->player.isDead()) {
+        if (this->player->isDead()) {
             std::cout << "Game Over! You have been defeated." << std::endl;
             exit(0);
         }

@@ -5,18 +5,19 @@
 #include <map>
 #include <functional>
 #include <string>
+#include <memory>
 #include "Level.h"
 #include "ScenarioHandler.h"
 #include "Player.h"
 
 class BaseLevel : public Level {
 protected:
+    std::shared_ptr<Player> player; // Use shared_ptr for shared ownership
     ScenarioHandler<std::string>* scenarioHandler; // Handles the decision tree structure
     std::map<std::string, std::function<void()>> actionMap; // Lookup table for actions
-    Player& player; // The player object, accessible by derived levels
 
 public:
-    BaseLevel(Player& player);
+    BaseLevel(std::shared_ptr<Player> player); // Constructor takes shared_ptr
     virtual ~BaseLevel();
 
     virtual void setUpDecisionTree() = 0; // Forces derived classes to implement

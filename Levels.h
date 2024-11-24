@@ -1,8 +1,9 @@
-// Levels.h
 #ifndef LEVELS_H
 #define LEVELS_H
 
 #include "LevelHandler.h"
+#include "LevelOne.h"
+#include <memory>
 
 class Levels {
 private:
@@ -11,6 +12,7 @@ private:
 public:
     Levels();
     ~Levels();
+
     void setUp();
     void startLevels();
 };

@@ -7,7 +7,7 @@
 #include "Utilities.h"
 
 // Constructor
-LevelOne::LevelOne(Player& player)
+LevelOne::LevelOne(std::shared_ptr<Player> player)
     : BaseLevel(player), isComplete(false), enemy("Nightmare", 200) {
     setUpDecisionTree();
 }
@@ -63,7 +63,7 @@ void LevelOne::setUpDecisionTree() {
 // Add Chest Action with Rewards
 void LevelOne::addChestAction(const std::string& actionName, int auraReward, const std::string& chestType) {
     addAction(actionName, [this, auraReward, chestType]() {
-        player.increaseAura(auraReward);
+        player->increaseAura(auraReward);
         std::cout << "You opened a " << chestType << " Chest! Aura increased by " << auraReward << "!" << std::endl;
     });
 }
@@ -72,8 +72,8 @@ void LevelOne::addChestAction(const std::string& actionName, int auraReward, con
 void LevelOne::battleBoss() {
     std::cout << "The boss, " << enemy.getName() << ", stands before you!" << std::endl;
 
-    while (!player.isDead() && !enemy.isDead()) {
-        std::cout << "Choose your action: (actual aura)" << player.getAura() << std::endl;
+    while (!player->isDead() && !enemy.isDead()) {
+        std::cout << "Choose your action: (actual aura)" << player->getAura() << std::endl;
         std::cout << "1. Attack (Cost: 50 Aura)" << std::endl;
         std::cout << "2. Heal (Cost: 30 Aura)" << std::endl;
         std::cout << "3. Use Ability" << std::endl;
@@ -83,26 +83,26 @@ void LevelOne::battleBoss() {
 
         switch (choice) {
             case 1:
-                if (player.getAura() >= 50) {
-                    int damage = (player.getName() == "Madara") ? (rand() % 20 + 30) : (rand() % 20 + 10);
+                if (player->getAura() >= 50) {
+                    int damage = (player->getName() == "Madara") ? (rand() % 20 + 30) : (rand() % 20 + 10);
                     enemy.decreaseHealth(damage);
-                    player.decreaseAura(50);
+                    player->decreaseAura(50);
                 } else {
                     std::cout << "Not enough aura to attack!" << std::endl;
                 }
                 break;
 
             case 2:
-                if (player.getAura() >= 30) {
-                    player.increaseHealth(20);
-                    player.decreaseAura(30);
+                if (player->getAura() >= 30) {
+                    player->increaseHealth(20);
+                    player->decreaseAura(30);
                 } else {
                     std::cout << "Not enough aura to heal!" << std::endl;
                 }
                 break;
 
             case 3:
-                player.useAbility(enemy); // Pass the enemy instance
+                player->useAbility(enemy); // Pass the enemy instance
                 break;
 
             default:
@@ -116,7 +116,7 @@ void LevelOne::battleBoss() {
             switch (enemyAction) {
                 case 0: { // Enemy attacks
                     int damage = enemy.attack();
-                    player.decreaseHealth(damage);
+                    player->decreaseHealth(damage);
                     break;
                 }
                 case 1: { // Enemy heals
@@ -135,8 +135,8 @@ void LevelOne::battleBoss() {
     }
 
     if (enemy.isDead()) {
-        std::cout << "You have defeated the boss!" << std::endl;
-    } else if (player.isDead()) {
+        std::cout << "You have defeated the boss! Congratulations " << player->getName() << std::endl;
+    } else if (player->isDead()) {
         std::cout << "You have been defeated by the boss..." << std::endl;
     }
 }

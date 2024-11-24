@@ -7,3 +7,7 @@ void displayLevelTransition(int level) { //this is the display for the level whe
     std::cout << "===================================" << std::endl;
     std::cout << "Get ready for your next challenge!" << std::endl;
 }
+
+void clearScreen() {
+    std::cout << "\033[2J\033[1;1H"; // ANSI escape code to clear screen and move cursor to top-left
+}

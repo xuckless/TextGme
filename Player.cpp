@@ -1,3 +1,5 @@
+// Player.cpp
+
 #include "Player.h"
 #include <iostream>
 #include <algorithm>
@@ -70,8 +72,14 @@ int Player::increaseAura(int amount) {
 }
 
 void Player::decreaseAura(int amount) {
-    aura -= (aura < amount) ? aura : amount;
+    if (aura >= amount) {
+        aura -= amount;
+        std::cout << "Aura decreased by " << amount << ". Remaining aura: " << aura << "." << std::endl;
+    } else {
+        std::cout << "Not enough aura! Current aura: " << aura << ".\nNo aura was deducted." << std::endl;
+    }
 }
+
 
 bool Player::isDead() const {
     return health <= 0;
@@ -101,8 +109,14 @@ void Player::useAbility(Enemy& enemy) {
 
 // Artifact Methods
 void Player::acquireArtifact(const std::string& artifactName) {
-    artifacts.push_back(artifactName);
+    if (std::find(artifacts.begin(), artifacts.end(), artifactName) == artifacts.end()) {
+        artifacts.push_back(artifactName);
+        std::cout << "You have acquired the artifact: " << artifactName << "!" << std::endl;
+    } else {
+        std::cout << "You already have the artifact: " << artifactName << "." << std::endl;
+    }
 }
+
 
 bool Player::hasArtifact(const std::string& artifactName) const {
     return std::find(artifacts.begin(), artifacts.end(), artifactName) != artifacts.end();

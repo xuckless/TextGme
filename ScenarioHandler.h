@@ -1,4 +1,3 @@
-// ScenarioHandler.h
 #ifndef SCENARIOHANDLER_H
 #define SCENARIOHANDLER_H
 
@@ -10,11 +9,14 @@ template <typename T>
 class ScenarioHandler {
 public:
     Scenes<T>* root;
+    Scenes<T>* currentNode; // Pointer to track the current node
 
     ScenarioHandler(T rootData);
 
     Scenes<T>* addChild(Scenes<T>* parent, T childData);
     Scenes<T>* linkChild(Scenes<T>* parent, Scenes<T>* link);
+    void setCurrentNode(Scenes<T>* node); // New method to set current node
+    Scenes<T>* getCurrentNode(); // New method to get the current node
     void printTree(Scenes<T>* node, std::string prefix = "");
     void printTree();
 };
@@ -22,6 +24,7 @@ public:
 template <typename T>
 ScenarioHandler<T>::ScenarioHandler(T rootData) {
     root = new Scenes<T>(rootData);
+    currentNode = root; // Initialize current node to root
 }
 
 template <typename T>
@@ -35,6 +38,16 @@ template <typename T>
 Scenes<T>* ScenarioHandler<T>::linkChild(Scenes<T>* parent, Scenes<T>* link) {
     parent->addChild(link);
     return link;
+}
+
+template <typename T>
+void ScenarioHandler<T>::setCurrentNode(Scenes<T>* node) {
+    currentNode = node; // Update the current node
+}
+
+template <typename T>
+Scenes<T>* ScenarioHandler<T>::getCurrentNode() {
+    return currentNode; // Return the current node
 }
 
 template <typename T>
