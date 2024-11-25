@@ -14,6 +14,8 @@ add_executable(TextGame main.cpp
         LevelHandler.cpp
         LevelOne.h
         LevelOne.cpp
+        LevelTwo.h
+        LevelTwo.cpp
         Levels.h
         Levels.cpp
         Player.cpp

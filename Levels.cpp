@@ -1,5 +1,8 @@
+// Levels.cpp
+
 #include "Levels.h"
 #include "LevelOne.h"
+#include "LevelTwo.h"
 #include <memory>
 
 Levels::Levels() {
@@ -23,8 +26,7 @@ void Levels::setUp() {
     firstLevel = new LevelHandler(new LevelOne(player), nullptr);
 
     // Add LevelTwo to the end of the levels linked list with the Player object
-    // For example:
-    // firstLevel->setNext(new LevelHandler(new LevelTwo(player), nullptr));
+    firstLevel->addLevelAfter(new LevelTwo(player));
 }
 
 void Levels::startLevels() {

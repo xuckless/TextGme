@@ -13,6 +13,8 @@ private:
     Enemy enemy;
     bool hasKey;
     bool chestOpened;
+    bool legendaryChestOpened; // Added: Flag for legendary chest
+    bool doorUnlocked;         // Added: Flag for door unlock status
     bool isDefending;
 
     void battleGuard();
