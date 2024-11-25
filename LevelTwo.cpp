@@ -150,7 +150,16 @@ void LevelTwo::battleEnemy() {
         std::cout << "5. Special Move 🌟\n";
 
         int choice;
-        std::cin >> choice;
+        while (true) {
+            std::cin >> choice;
+            if (std::cin.fail() || choice < 1 || choice > 5) {
+                std::cin.clear(); // Clear the error flag
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+                std::cout << "❌ Invalid action. Please enter a number between 1 and 5. 🔄" << std::endl;
+            } else {
+                break; // Valid input
+            }
+        }
 
         switch (choice) {
             case 1:
@@ -266,6 +275,7 @@ void LevelTwo::completeLevel() {
 // Proceed with Scenario Navigation
 void LevelTwo::proceed() {
     // Display level transition
+
     displayLevelTransition(2);
 
     std::cout << "Starting Level Two..." << std::endl;

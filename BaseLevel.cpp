@@ -13,6 +13,7 @@ void displayEndeavorArt() {
 BaseLevel::BaseLevel(std::shared_ptr<Player> player) : player(player) {
     displayEndeavorArt();
     // Character selection at the start
+
     std::cout << "Choose your character:" << std::endl;
     std::cout << "1. 🦊 Ban (Ability: Steal Life)" << std::endl;
     std::cout << "2. ⚪ Gojo (Ability: Starts with more aura)" << std::endl;
