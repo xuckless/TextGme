@@ -69,6 +69,8 @@ Scenes<std::string>* LevelOne::addInspectionOption(const std::string& optionText
 
 // LevelOne.cpp
 
+// LevelOne.cpp
+
 void LevelOne::setUpDecisionTree() {
     scenarioHandler = new ScenarioHandler<std::string>(
         "You find yourself in a dimly lit dungeon cell. The air is damp, and the walls are covered with moss."
@@ -116,16 +118,12 @@ void LevelOne::setUpDecisionTree() {
         std::cout << "The door is locked from the outside. You might need a key or another way to open it." << std::endl;
     });
 
-    auto tryToOpenDoor = scenarioHandler->addChild(inspectDoor, "Try to force the door open");
-    addAction("Try to force the door open", [this]() {
-        std::cout << "You try to force the door open, but it's too sturdy. You need to find another way." << std::endl;
-    });
-
     // Define "Use the key on the door" node
     auto useKeyOnDoor = scenarioHandler->addChild(choosePath, "Use the key on the door");
     addAction("Use the key on the door", [this]() {
         if (hasKey) {
             std::cout << "You use the key to unlock the door. It creaks open, revealing a dimly lit hallway." << std::endl;
+            // Unlock the door logic here (e.g., set a flag)
         } else {
             std::cout << "You don't have a key to unlock the door."  << std::endl;
         }
@@ -137,12 +135,9 @@ void LevelOne::setUpDecisionTree() {
         if (hasKey) {
             std::cout << "You enter the hallway. The walls are lined with torches, and you hear distant sounds." << std::endl;
         } else {
-            std::cout  << "You cannot proceed through the door without unlocking it first."<< std::endl;
+            std::cout  << "You cannot proceed through the door without unlocking it first." << std::endl;
         }
     });
-
-    // Link "Use the key on the door" to "Proceed through the door"
-    scenarioHandler->linkChild(useKeyOnDoor, proceedThroughDoor);
 
     // Define "Proceed through the tunnel" node
     auto proceedThroughTunnel = scenarioHandler->addChild(choosePath, "Proceed through the tunnel");
@@ -190,9 +185,15 @@ void LevelOne::setUpDecisionTree() {
     });
 
     // Link "Try to force the door open" back to "Choose your path"
-    scenarioHandler->linkChild(tryToOpenDoor, choosePath);
+    // Ensure that this option is meaningful and not duplicated
 
     // Optional: Add "Go Back" option after failing to force the door open
+    // Instead of duplicating "Proceed through the door", provide distinct options
+    auto tryToOpenDoor = scenarioHandler->addChild(inspectDoor, "Try to force the door open");
+    addAction("Try to force the door open", [this]() {
+        std::cout << "You try to force the door open, but it's too sturdy. You need to find another way." << std::endl;
+    });
+
     auto goBackFromForceDoor = scenarioHandler->addChild(tryToOpenDoor, "Go back to Choose your path");
     addAction("Go back to Choose your path", [this]() {
         std::cout << "You decide to explore other options available to you." << std::endl;
@@ -201,8 +202,6 @@ void LevelOne::setUpDecisionTree() {
     // Link "Go back to Choose your path" to "Choose your path" node
     scenarioHandler->linkChild(goBackFromForceDoor, choosePath);
 }
-
-
 
 
 // Battle with a guard

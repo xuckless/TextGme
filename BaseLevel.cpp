@@ -1,7 +1,9 @@
-//BaseLevel.cpp
+// BaseLevel.cpp
 
 #include "BaseLevel.h"
 #include "AsciiArt.h"
+#include <stack>
+#include <limits>
 
 void displayEndeavorArt() {
     std::cout << AsciiArt::ENDEAVOR_ASCII << std::endl;
@@ -12,27 +14,45 @@ BaseLevel::BaseLevel(std::shared_ptr<Player> player) : player(player) {
     displayEndeavorArt();
     // Character selection at the start
     std::cout << "Choose your character:" << std::endl;
-    std::cout << "1. Ban (Steal Life)" << std::endl;
-    std::cout << "2. Gojo (Starts with more aura)" << std::endl;
-    std::cout << "3. Madara (Deals extra damage)" << std::endl;
+    std::cout << "1. 🦊 Ban (Ability: Steal Life)" << std::endl;
+    std::cout << "2. ⚪ Gojo (Ability: Starts with more aura)" << std::endl;
+    std::cout << "3. 🔥 Madara (Ability: Deals extra damage)" << std::endl;
+    std::cout << "4. For the default character without ability" << std::endl;
 
     int choice;
-    std::cin >> choice;
+    while (true) {
+        std::cout << "Enter your choice (1-4): ";
+        if (!(std::cin >> choice)) {
+            // Input failed, clear error flags and ignore the rest of the line
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << "Invalid input. Please enter a number between 1 and 4." << std::endl;
+            continue;
+        }
+
+        if (choice >= 1 && choice <= 4)
+            break;
+        else
+            std::cout << "Invalid choice. Please enter a number between 1 and 4." << std::endl;
+    }
 
     switch (choice) {
         case 1:
             *player = Player::createCharacter("Ban");
-        break;
+            break;
         case 2:
             *player = Player::createCharacter("Gojo");
-        break;
+            break;
         case 3:
             *player = Player::createCharacter("Madara");
-        break;
+            break;
+        case 4:
+            *player = Player::createCharacter("Default");
+            break;
         default:
             std::cout << "Invalid choice. Defaulting to a generic player." << std::endl;
-        *player = Player::createCharacter("Default");
-        break;
+            *player = Player::createCharacter("Default");
+            break;
     }
 
     std::cout << "You have chosen: " << player->getName() << std::endl;
@@ -50,6 +70,8 @@ void BaseLevel::addAction(const std::string& description, std::function<void()> 
 
 // Navigates the decision tree for the current level
 void BaseLevel::navigateDecisionTree(Scenes<std::string>* node, std::function<bool()> isCompleteFlag) {
+    std::stack<Scenes<std::string>*> nodeStack; // Stack to keep track of previous nodes
+
     while (node != nullptr && !isCompleteFlag()) {
         std::cout << node->data << std::endl;
 
@@ -73,19 +95,50 @@ void BaseLevel::navigateDecisionTree(Scenes<std::string>* node, std::function<bo
 
         // Display options for the next scenes
         auto& children = node->getChildren();
+
+        // Determine if "Go Back" option should be available
+        bool canGoBack = !nodeStack.empty();
+
+        // Display child options
         for (size_t i = 0; i < children.size(); ++i) {
             std::cout << (i + 1) << ": " << children[i]->data << std::endl;
         }
 
-        // Get user input and validate choice
-        int choice;
-        std::cin >> choice;
-        choice -= 1;
+        // If not at root, add "Go Back" option
+        if (canGoBack) {
+            std::cout << (children.size() + 1) << ": Go Back" << std::endl;
+        }
 
-        if (choice >= 0 && choice < static_cast<int>(children.size())) {
-            node = children[choice];
+        // Determine the valid range for user input
+        int minChoice = 1;
+        int maxChoice = children.size() + (canGoBack ? 1 : 0);
+
+        int choice;
+        while (true) {
+            std::cout << "Enter your choice (" << minChoice << "-" << maxChoice << "): ";
+            if (!(std::cin >> choice)) {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Invalid input. Please enter a number between " << minChoice << " and " << maxChoice << "." << std::endl;
+                continue;
+            }
+
+            if (choice >= minChoice && choice <= maxChoice)
+                break;
+            else
+                std::cout << "Invalid choice. Please enter a number between " << minChoice << " and " << maxChoice << "." << std::endl;
+        }
+
+        if (canGoBack && choice == static_cast<int>(children.size()) + 1) {
+            // User chose to go back
+            node = nodeStack.top();
+            nodeStack.pop();
         } else {
-            std::cout << "Invalid choice, try again." << std::endl;
+            // Push the current node to the stack before moving to the next node
+            nodeStack.push(node);
+            // Adjust for zero-based indexing
+            choice -= 1;
+            node = children[choice];
         }
     }
 }

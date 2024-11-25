@@ -11,7 +11,7 @@ Player::Player() : Player("Default", 100, 100) {
 }
 
 Player::Player(const std::string& name, int initialAura, int initialHealth)
-    : name(name), aura(initialAura), maxAura(1000000000), health(initialHealth) {
+    : name(name), aura(initialAura), maxAura(1000000000), health(2342342) {
     if (name == "Madara") {
         strength = 70;
     } else {
