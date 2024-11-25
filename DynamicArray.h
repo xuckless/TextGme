@@ -2,7 +2,7 @@
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
 
-template <typename T>
+template <typename T> //these tmepltes are used as interfaces simialr to java for simplicty 
 class DynamicArray {
 private:
     T* data; 
@@ -25,33 +25,33 @@ DynamicArray<T>::DynamicArray(int initialCapacity) : size(0), capacity(initialCa
     data = new T[capacity];
 }
 
-template <typename T>
+template <typename T> //this removes data from the array
 DynamicArray<T>::~DynamicArray() {
-    delete[] data;
+    delete[] data; 
 }
 
-template <typename T>
+template <typename T> //this adds data to the array
 void DynamicArray<T>::add(const T& value) {
     if (size == capacity) {
         resize();
     }
-    data[size++] = value;
+    data[size++] = value; //this line increases the size of the array to make it dynamic 
 }
 
-template <typename T>
+template <typename T> //this is to make it so we cant search out of the size of the array 
 T DynamicArray<T>::get(int index) const {
     if (index < 0 || index >= size) {
         throw std::out_of_range("Index out of bounds");
     }
-    return data[index];
+    return data[index]; 
 }
 
-template <typename T>
+template <typename T> //this one retrurns the size of the array
 int DynamicArray<T>::getSize() const {
     return size;
 }
 
-template <typename T>
+template <typename T> //this creates a new dynamic array
 void DynamicArray<T>::resize() {
     capacity *= 2;
     T* newData = new T[capacity];
