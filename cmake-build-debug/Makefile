@@ -225,6 +225,30 @@ LevelOne.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelOne.cpp.s
 .PHONY : LevelOne.cpp.s
 
+LevelThree.o: LevelThree.cpp.o
+.PHONY : LevelThree.o
+
+# target to build an object file
+LevelThree.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.o
+.PHONY : LevelThree.cpp.o
+
+LevelThree.i: LevelThree.cpp.i
+.PHONY : LevelThree.i
+
+# target to preprocess a source file
+LevelThree.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.i
+.PHONY : LevelThree.cpp.i
+
+LevelThree.s: LevelThree.cpp.s
+.PHONY : LevelThree.s
+
+# target to generate assembly for a file
+LevelThree.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/TextGame.dir/build.make CMakeFiles/TextGame.dir/LevelThree.cpp.s
+.PHONY : LevelThree.cpp.s
+
 LevelTwo.o: LevelTwo.cpp.o
 .PHONY : LevelTwo.o
 
@@ -366,6 +390,9 @@ help:
 	@echo "... LevelOne.o"
 	@echo "... LevelOne.i"
 	@echo "... LevelOne.s"
+	@echo "... LevelThree.o"
+	@echo "... LevelThree.i"
+	@echo "... LevelThree.s"
 	@echo "... LevelTwo.o"
 	@echo "... LevelTwo.i"
 	@echo "... LevelTwo.s"

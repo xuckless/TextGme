@@ -3,6 +3,7 @@
 #include "Levels.h"
 #include "LevelOne.h"
 #include "LevelTwo.h"
+#include "LevelThree.h"
 #include <memory>
 
 Levels::Levels() {
@@ -25,8 +26,12 @@ void Levels::setUp() {
     // Initialize the first level with the Player object
     firstLevel = new LevelHandler(new LevelOne(player), nullptr);
 
-    // Add LevelTwo to the end of the levels linked list with the Player object
+    // Add LevelTwo to the levels linked list
     firstLevel->addLevelAfter(new LevelTwo(player));
+
+    // Add LevelThree to the levels linked list
+    LevelHandler* secondLevel = firstLevel->getNextLevel();
+    secondLevel->addLevelAfter(new LevelThree(player));
 }
 
 void Levels::startLevels() {
