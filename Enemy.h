@@ -1,4 +1,4 @@
-//Enemy.h
+// Enemy.h
 
 #ifndef ENEMY_H
 #define ENEMY_H
@@ -12,7 +12,7 @@ private:
 
 public:
     Enemy(const std::string& name, int initialHealth);
-    //enemy status functions
+    // Enemy status functions
     std::string getName() const;
     int getHealth() const;
     void decreaseHealth(int amount);
@@ -23,6 +23,9 @@ public:
     int attack();
     void defend();
     void heal();
+
+    // Add the specialAttack method
+    int specialAttack();
 };
 
 #endif // ENEMY_H

@@ -11,3 +11,5 @@ void displayLevelTransition(int level) { //this is the display for the level whe
 void clearScreen() {
     std::cout << "\033[2J\033[1;1H"; // ANSI escape code to clear screen and move cursor to top-left
 }
+
+

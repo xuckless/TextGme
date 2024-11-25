@@ -25,7 +25,7 @@ Player::Player(const std::string& name) : Player(name, 0, 100) {
 
 Player Player::createCharacter(const std::string& characterChoice) {
     if (characterChoice == "Ban") {
-        return Player("Ban", 50000, 120);
+        return Player("Ban", 100000, 120);
     } else if (characterChoice == "Gojo") {
         return Player("Gojo", 150, 100);
     } else if (characterChoice == "Madara") {
@@ -33,6 +33,11 @@ Player Player::createCharacter(const std::string& characterChoice) {
     } else {
         return Player("Default", 100, 100);
     }
+}
+
+void Player::increaseStrength(int amount) {
+    strength += amount;
+    std::cout << "Your strength has increased by " << amount << "! Current strength: " << strength << "." << std::endl;
 }
 
 std::string Player::getName() const {
@@ -70,6 +75,14 @@ int Player::increaseAura(int amount) {
     }
     return aura;
 }
+
+int Player::attack() {
+    int baseDamage = rand() % 20 + 10; // Base damage between 10 and 30
+    int damage = baseDamage + (strength / 2); // Adjust damage based on strength
+    std::cout << name << " attacks and deals " << damage << " damage!" << std::endl;
+    return damage;
+}
+
 
 void Player::decreaseAura(int amount) {
     if (aura >= amount) {

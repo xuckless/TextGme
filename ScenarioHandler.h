@@ -1,9 +1,11 @@
+// ScenarioHandler.h
 #ifndef SCENARIOHANDLER_H
 #define SCENARIOHANDLER_H
 
 #include "Scenes.h"
 #include <string>
 #include <iostream>
+#include <queue> // Needed for BFS
 
 template <typename T>
 class ScenarioHandler {
@@ -19,6 +21,9 @@ public:
     Scenes<T>* getCurrentNode(); // New method to get the current node
     void printTree(Scenes<T>* node, std::string prefix = "");
     void printTree();
+
+    // New method to find a child by its data
+    Scenes<T>* getChildByData(const T& data);
 };
 
 template <typename T>
@@ -68,6 +73,28 @@ void ScenarioHandler<T>::printTree(Scenes<T>* node, std::string prefix) {
 template <typename T>
 void ScenarioHandler<T>::printTree() {
     printTree(root, "");
+}
+
+template <typename T>
+Scenes<T>* ScenarioHandler<T>::getChildByData(const T& data) {
+    // Perform a breadth-first search to find the node with the given data
+    std::queue<Scenes<T>*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        Scenes<T>* current = q.front();
+        q.pop();
+
+        if (current->data == data) {
+            return current;
+        }
+
+        for (auto child : current->getChildren()) {
+            q.push(child);
+        }
+    }
+
+    return nullptr; // Return nullptr if not found
 }
 
 #endif // SCENARIOHANDLER_H

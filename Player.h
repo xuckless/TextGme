@@ -28,6 +28,8 @@ public:
     std::string getName() const;
     int getAura() const;
     int getMaxAura() const;
+    int attack();
+    void increaseStrength(int amount);
     int getHealth() const;
     int increaseHealth(int amount);
     void decreaseHealth(int amount);
