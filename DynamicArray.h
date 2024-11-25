@@ -5,11 +5,11 @@
 template <typename T>
 class DynamicArray {
 private:
-    T* data;
+    T* data; 
     int size;
     int capacity;
 
-    void resize();
+    void resize(); //this method adds more to the sie of the array which id what makees it dynamic 
 
 public:
     DynamicArray(int initialCapacity = 2);
