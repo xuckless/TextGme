@@ -450,7 +450,10 @@ void LevelOne::completeLevel() {
 // Proceed with Scenario Navigation
 void LevelOne::proceed() {
     // Display level transition
+    std::cout << " \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n \n" << std::endl;
+
     displayLevelTransition(1);
+
 
     std::cout << "Starting Level One..." << std::endl;
     navigateDecisionTree(scenarioHandler->root, [this]() { return isComplete; });

@@ -74,7 +74,7 @@ void BaseLevel::navigateDecisionTree(Scenes<std::string>* node, std::function<bo
     std::stack<Scenes<std::string>*> nodeStack; // Stack to keep track of previous nodes
 
     while (node != nullptr && !isCompleteFlag()) {
-        std::cout << node->data << std::endl;
+        std::cout << node->data << "\n" << std::endl;
 
         // Execute action associated with the current node if not already executed
         if (actionMap.find(node->data) != actionMap.end() && !node->actionExecuted) {
@@ -116,11 +116,14 @@ void BaseLevel::navigateDecisionTree(Scenes<std::string>* node, std::function<bo
 
         int choice;
         while (true) {
+            std::cout << "\n"<< std::endl;
             std::cout << "Enter your choice (" << minChoice << "-" << maxChoice << "): ";
+
             if (!(std::cin >> choice)) {
                 std::cin.clear();
                 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                 std::cout << "Invalid input. Please enter a number between " << minChoice << " and " << maxChoice << "." << std::endl;
+                std::cout << "\n"<< std::endl;
                 continue;
             }
 
